@@ -1,5 +1,6 @@
-﻿using BulkyBookWeb.Data;
-using BulkyBookWeb.Models;
+﻿using BulkyBook.DataAccess;
+using BulkyBook.DataAccess.Data;
+using BulkyBook.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BulkyBookWeb.Controllers {
@@ -65,10 +66,12 @@ namespace BulkyBookWeb.Controllers {
             if (id == null || id == 0) {
                 return NotFound();
             }
+
             var categoryFromFb = _db.Categories.Find(id);
             if (categoryFromFb == null) {
                 return NotFound();
             }
+
             return View(categoryFromFb);
         }
 
